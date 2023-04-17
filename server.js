@@ -9,6 +9,8 @@ process.on('uncaughtException', (err) => {
   console.log(err.message);
   process.exit(1);
 });
+
+
 const app = require('./app');
 
 const DB = process.env.DATABASE;

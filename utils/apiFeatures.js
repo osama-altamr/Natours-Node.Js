@@ -1,5 +1,4 @@
 class APIFeatures {
- 
   constructor(query, queryString) {
     this.query = query;
     this.queryString = queryString;
@@ -13,6 +12,7 @@ class APIFeatures {
       'limit',
       'fields',
     ];
+
     excludedFields.forEach((el) => delete queryObj[el]);
 
     let queryStr = JSON.stringify(queryObj);
@@ -27,6 +27,8 @@ class APIFeatures {
 
   sort() {
     if (this.queryString.sort) {
+      console.log(this.queryString.sort);
+
       const sortBy = this.queryString.sort
         .split(',')
         .join(' ');

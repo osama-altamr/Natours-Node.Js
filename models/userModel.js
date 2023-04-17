@@ -9,19 +9,23 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: [true, 'Please tell us your name'],
-    uniqe: true,
+    unique: true,
   },
   email: {
     type: String,
     required: [true, 'Please provide your email address'],
-    unique: true,
+
     lowercase: true,
     validate: [
       validator.isEmail,
       'Please provide a valid email address',
     ],
   },
-  photo: String,
+  verified: Boolean,
+  photo: {
+    type: String,
+    default: 'default.jpg',
+  },
   passwordChangedAt: Date,
   password: {
     type: String,
