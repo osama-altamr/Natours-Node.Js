@@ -11,6 +11,15 @@ const stripe = require('stripe')(
 
 exports.getCheckoutSession = catchAsync(
   async (req, res, next) => {
+    const booking = await Booking.find({
+      user: req.user,
+      tour: req.params.tourId,
+    });
+    if (booking) {
+      return next(
+        new AppError('The tour is already booked', 400)
+      );
+    }
     //   1) Get the currently booked tour
     const tour = await Tour.findById(req.params.tourId);
 
@@ -100,7 +109,7 @@ exports.getBooking = factory.getOne(Booking);
 exports.addParticipants = catchAsync(
   async (req, res, next) => {
     const tour = await Tour.findById(req.body.tour);
-    const ind = req.body.startDatesTest ;
+    const ind = req.body.startDatesTest;
     if (tour.startDatesTest[ind].soldOut)
       return next(
         new AppError(

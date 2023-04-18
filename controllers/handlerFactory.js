@@ -41,6 +41,7 @@ exports.updateOne = (Model) =>
 
 exports.createOne = (Model) =>
   catchAsync(async (req, res, next) => {
+
     const doc = await Model.create(req.body);
     return res.status(201).json({
       status: 'success',
@@ -67,7 +68,7 @@ exports.getOne = (Model, popOptions) =>
   });
 exports.getAll = (Model) =>
   catchAsync(async (req, res, next) => {
-    console.log(req.params);
+   
     // Allow nested routes  =>GET
     let filter = {};
     if (req.params.tourId)

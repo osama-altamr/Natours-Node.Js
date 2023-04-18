@@ -4,8 +4,7 @@ const User = require('./../models/userModel');
 const catchAsync = require('./../utils/catchAsync');
 const AppError = require('./../utils/appError');
 const Email = require('./../utils/email');
-
-
+const speakeasy = require('speakeasy');
 const jwt = require('jsonwebtoken');
 const { request } = require('http');
 

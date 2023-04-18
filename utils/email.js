@@ -1,6 +1,7 @@
 const nodemailer = require('nodemailer');
 const pug = require('pug');
 const { convert } = require('html-to-text');
+
 module.exports = class Email {
   constructor(user, url) {
     this.to = user.email;
@@ -8,6 +9,7 @@ module.exports = class Email {
     this.url = url;
     this.from = `Osama Altamr <${process.env.EMAIL_FROM}>`;
   }
+
   newTransport() {
     if (process.env.NODE_ENV === 'production') {
       // Sendgrid

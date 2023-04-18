@@ -6,16 +6,15 @@ const reviewController = require('./../controllers/reviewController');
 
 const reviewRouter = require('./reviewRoutes');
 const bookingRouter = require('./bookingRoutes');
+const favoriteRouter = require('./favoriteRoutes');
 const express = require('express');
 
 const router = express.Router();
 
 router.use('/:tourId/bookings', bookingRouter);
+router.use('/:tourId/favorites', favoriteRouter);
 
-router.use(
-  '/:tourId/reviews',
-  reviewRouter
-);
+router.use('/:tourId/reviews', reviewRouter);
 
 router
   .route('/top-5-cheap')

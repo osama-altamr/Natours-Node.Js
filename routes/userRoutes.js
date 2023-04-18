@@ -1,15 +1,18 @@
 const userController = require('./../controllers/userController');
 const authController = require('./../controllers/authController');
 const bookingRouter = require('./bookingRoutes');
+const favoriteRouter = require('./favoriteRoutes');
 const express = require('express');
 
 const router = express.Router();
 
 router.use('/:userId/bookings', bookingRouter);
+router.use('/:userId/favorites', favoriteRouter);
 
 router.post('/login', authController.login);
 
 router.post('/signup', authController.signup);
+
 router.post(
   '/forgotPassowrd',
   authController.forgotPassword

@@ -84,6 +84,14 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 
+// userSchema.virtual('favorites', {
+//   ref: 'Favorite',
+//   foreignField: 'user',
+//   localField: '_id',
+// });
+
+
+
 // instance method
 userSchema.methods.correctPassword = async function (
   candidatePassword,
