@@ -41,7 +41,7 @@ exports.uploadTourImages = upload.fields([
 // upload.array('images',5)=>req.files
 
 exports.resizeTourImages = async (req, res, next) => {
-  console.log(req.files);
+
   if (!req.files.imageCover || !req.files.images) next();
   // 1) Cover images
   const id = req.params.id;
@@ -70,7 +70,7 @@ exports.resizeTourImages = async (req, res, next) => {
       req.body.images.push(fileName);
     })
   );
-  console.log(req.body.images);
+
   next();
 };
 

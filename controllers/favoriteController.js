@@ -6,7 +6,7 @@ const AppError = require('../utils/appError');
 exports.setUserTourIDs = (req, res, next) => {
   if (!req.body.user) req.body.user = req.params.userId;
   if (!req.body.tour) req.body.tour = req.params.tourId;
-  console.log(req.params);
+ 
   next();
 };
 exports.checkTourIsFavorite = async (req, res, next) => {

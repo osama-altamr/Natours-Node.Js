@@ -9,12 +9,10 @@ dotenv.config({ path: './config.env' });
 
 const DB = process.env.DATABASE;
 
-mongoose
-  .connect(DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log('DB connection succussesfull !'));
+mongoose.connect(DB, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 
 // first tours-simple.json
 // second tours
@@ -27,33 +25,22 @@ const reviews = JSON.parse(
 const users = JSON.parse(
   fs.readFileSync(`${__dirname}/users.json`, 'utf-8')
 );
-// console.log(tours);
+
 const importData = async () => {
   try {
-    await Tour.create(tours).then(() =>
-      console.log('IMPORT DATA Success')
-    );
-    await Review.create(reviews).then(() =>
-      console.log('IMPORT DATA Success')
-    );
+    await Tour.create(tours);
+    await Review.create(reviews);
     await User.create(users, {
       validateBeforeSave: false,
-    }).then(() => console.log('IMPORT DATA Success'));
-
-  } catch (err) {
-    console.log(err);
-  }
+    });
+  } catch (err) {}
   process.exit();
 };
 const deletetData = async () => {
   try {
-    await Tour.deleteMany().then(() =>
-      console.log('DELETE DATA Success')
-    );    await Review.deleteMany().then(() =>
-      console.log('DELETE DATA Success')
-    );    await User.deleteMany().then(() =>
-      console.log('DELETE DATA Success')
-    );
+    await Tour.deleteMany();
+    await Review.deleteMany();
+    await User.deleteMany();
   } catch (err) {}
 
   process.exit();

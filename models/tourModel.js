@@ -177,14 +177,14 @@ tourSchema.pre('save', function (next) {
 
 // tourSchema.pre('save', function (next) {
 
-//   console.log('Will Save Doc', this.name ='before dB');
+
 //   next();
 // });
 
 // //After pre Middleware  completed and after comminning data from DB before sending response
 
 // tourSchema.post('save', function (doc, next) {
-//   console.log('Post Middleware', doc.name='post middleware');
+
 //   next();
 // });
 

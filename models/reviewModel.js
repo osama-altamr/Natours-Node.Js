@@ -80,7 +80,7 @@ reviewSchema.post('save', function () {
   this.constructor.calcAverageRatings(this.tour);
 });
 reviewSchema.pre(/^findOneAnd/, async function (next) {
-  //  console.log(await this);
+
   this.rev = await this.findOne().clone();
 
   if (!this.rev) {
@@ -102,8 +102,7 @@ reviewSchema.post(
       typeof doc.constructor.calcAverageRatings ===
         'function'
     ) {
-      console.log(doc,"Dooocs")
-      console.log('PPPPPPPOOOOOSTTTTTTTTTT')
+
       await doc.constructor.calcAverageRatings(
         doc.tour
       );

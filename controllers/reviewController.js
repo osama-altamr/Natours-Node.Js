@@ -18,7 +18,7 @@ exports.actuallyBooked = catchAsync(
       user: req.body.user,
     });
 
-    console.log(bookings);
+
     
     if (bookings.length === 0)
       return next(
